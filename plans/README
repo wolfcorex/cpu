@@ -1,0 +1,77 @@
+=======================================================
+                MODERN CPU (x86-64 compatible)
+=======================================================
+
+                +--------------------------+
+                |        PROGRAM COUNTER   |
+                +--------------------------+
+                           |
+                           v
++--------------------------------------------------------------+
+|                 INSTRUCTION FETCH UNIT (IFU)                 |
+|   - L1 I-Cache (with NX/DEP support in PTEs)                 |
+|   - Branch Predictor (BPU)                                   |
+|   - Instruction Queue                                         |
++--------------------------------------------------------------+
+                           |
+                           v
++--------------------------------------------------------------+
+|                 INSTRUCTION DECODE UNIT (IDU)                |
+|   - x86 Decoder (supports x86-64, SSE2+, LAHF/SAHF)          |
+|   - Microcode ROM (for complex ops)                          |
+|   - Instruction Fusion / µOP Cache                           |
++--------------------------------------------------------------+
+                           |
+                           v
++--------------------------------------------------------------+
+|           REGISTER RENAME / SCHEDULER / OoO ENGINE            |
+|   - Integer Register Rename                                  |
+|   - FP/Vector Register Rename                                |
+|   - Dependency Tracking / Reorder Buffer (ROB)               |
+|   - Supports CMPXCHG16b atomic ops                           |
++--------------------------------------------------------------+
+                           |
+                           v
++--------------------------------------------------------------+
+|                    EXECUTION UNITS (EUs)                     |
+|   - ALUs (Integer arithmetic, logic)                         |
+|   - FPUs (Floating Point math, scalar + SIMD)                |
+|   - Vector Units (SSE2 baseline, later AVX)                  |
+|   - Branch Execution Units                                   |
+|   - Memory Execution Units (Load/Store Queue)                |
++--------------------------------------------------------------+
+                           |
+                           v
++--------------------------------------------------------------+
+|                   MEMORY HIERARCHY & FABRIC                  |
+|   - L1 D-Cache                                               |
+|   - Unified L2 Cache                                         |
+|   - Shared LLC / L3 Cache                                    |
+|   - Memory Controller (DDR4/DDR5 capable)                    |
+|   - DMI / Fabric Interface to Chipset                        |
++--------------------------------------------------------------+
+                           |
+                           v
++--------------------------------------------------------------+
+|                  PLATFORM & SYSTEM LOGIC                     |
+|   - PCIe Root Complex (device enumeration)                   |
+|   - APIC / x2APIC (interrupt controller)                     |
+|   - System Management Mode (SMM)                             |
+|   - Secure Boot Engine (UEFI + microcode validation)         |
+|   - fTPM 2.0 (firmware Trusted Platform Module)              |
+|   - Power Management (C-states, P-states)                    |
++--------------------------------------------------------------+
+
+=======================================================
+                 FINAL FEATURE CHECKLIST
+=======================================================
+[x] x86-64 Long Mode
+[x] NX / DEP bit
+[x] CMPXCHG16b
+[x] LAHF / SAHF (in 64-bit mode)
+[x] SSE2 baseline (vector ops)
+[x] CPUID / MSRs
+[x] APIC / x2APIC
+[x] Secure Boot support (UEFI firmware)
+[x] TPM 2.0 (fTPM integration)
+=======================================================
